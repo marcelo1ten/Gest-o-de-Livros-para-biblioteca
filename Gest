@@ -1,0 +1,49 @@
+// array para armazenar livros
+var books = [];
+
+// função para adicionar um novo livro
+function addBook(name, checkOutDate, returnDate, borrower) {
+  var book = {
+    name: name,
+    checkOutDate: checkOutDate,
+    returnDate: returnDate,
+    borrower: borrower
+  };
+  books.push(book);
+}
+
+// função para organizar os livros por ordem alfabética
+function sortBooks() {
+  books.sort(function(a, b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+// função para exibir todos os livros
+function displayBooks() {
+  for (var i = 0; i < books.length; i++) {
+    console.log("Nome: " + books[i].name);
+    console.log("Data de Retirada: " + books[i].checkOutDate);
+    console.log("Data de Devolução: " + books[i].returnDate);
+    console.log("Locador: " + books[i].borrower.name);
+    console.log("Informações do Locador: " + books[i].borrower.details);
+    console.log("------------------------------");
+  }
+}
+
+// adicionando alguns livros para teste
+addBook("Aprendendo JavaScript", "01/01/2022", "01/05/2022", { name: "João Silva", details: "joao.silva@email.com, (11) 98765-4321" });
+addBook("JavaScript avançado", "01/02/2022", "01/06/2022", { name: "Maria Oliveira", details: "maria.oliveira@email.com, (11) 12345-6789" });
+addBook("Introdução ao HTML5 e CSS3", "01/03/2022", "01/07/2022", { name: "Pedro Gomes", details: "pedro.gomes@email.com, (11) 67890-1234" });
+
+// organizando os livros
+sortBooks();
+
+// exibindo os livros
+displayBooks();
